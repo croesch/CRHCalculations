@@ -7,8 +7,6 @@ package com.github.crhcalculations.sudoku;
  * @version $Revision: 1.1 $ ($Date: 09.07.2010 16:43:15 $)
  */
 public class SudokuSolver {
-  /** Version number. */
-  public static final String VER = "$Revision: 1.1 $";
 
   private final int[][] field = { {0, 0, 8,/**/0, 0, 6,/**/9, 1, 0},
                                  {6, 1, 0,/**/5, 4, 0,/**/0, 0, 0},
@@ -33,7 +31,7 @@ public class SudokuSolver {
   public SudokuSolver() {
     findSolution(0);
 
-    System.out.println(this.loesungen + " L�sungen gefunden ...");
+    System.out.println(this.loesungen + " Lösungen gefunden ...");
   }
 
   private void findSolution(int offs) {

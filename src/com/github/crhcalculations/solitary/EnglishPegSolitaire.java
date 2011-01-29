@@ -7,8 +7,6 @@ package com.github.crhcalculations.solitary;
  * @version $Revision: 1.1 $ ($Date: 25.07.2010 13:37:59 $)
  */
 public class EnglishPegSolitaire {
-  /** Version number. */
-  public static final String VER = "$Revision: 1.1 $";
 
   private final int[][] field = new int[7][7];
 

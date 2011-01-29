@@ -10,8 +10,6 @@ import java.util.List;
  * @version $Revision: 1.1 $ ($Date: 25.07.2010 16:38:47 $)
  */
 public class TwinPrimeFinder {
-  /** Version number. */
-  public static final String VER = "$Revision: 1.1 $";
 
   private final List<Integer> primzahlen = new ArrayList<Integer>();
 

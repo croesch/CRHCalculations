@@ -7,8 +7,6 @@ package com.github.crhcalculations.solitary;
  * @version $Revision: 1.1 $ ($Date: 25.07.2010 13:49:59 $)
  */
 public class SolitaireSolve {
-  /** Version number. */
-  public static final String VER = "$Revision: 1.1 $";
 
   private static boolean findSolution(EnglishPegSolitaire es) {
     if (!es.isFinished()) {

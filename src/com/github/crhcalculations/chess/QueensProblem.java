@@ -7,8 +7,6 @@ package com.github.crhcalculations.chess;
  * @version $Revision: 1.1 $ ($Date: 09.07.2010 13:17:22 $)
  */
 public class QueensProblem {
-  /** Version number. */
-  public static final String VER = "$Revision: 1.1 $";
 
   private static final int MAX_SIZE = 8;
 
@@ -28,7 +26,7 @@ public class QueensProblem {
 
     find_solution(0);
 
-    System.out.println(this.anzahl + " L�sungen gefunden");
+    System.out.println(this.anzahl + " Lösungen gefunden");
   }
 
   private void find_solution(int dameNr) {
