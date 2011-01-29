@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO Comment here ???
+ * This class is able to find lychrel numbers or possible lychrel numbers, since you can define the number of iterations
+ * after a number is treated as a lychrel number.
  * 
  * @author croesch
  * @since Date: 25.07.2010 15:32:41
@@ -16,9 +17,11 @@ public class LychrelTester {
 
   private static final int MAX_ITERATIONS2 = 10000;
 
+  private static final int MAX_NUMBER = 1000;
+
   public static void main(String[] args) {
     List<Integer> possibilities = new ArrayList<Integer>();
-    for (int i = 1; i <= 1000; ++i) {
+    for (int i = 1; i <= MAX_NUMBER; ++i) {
       if (findPalindrom(i, MAX_ITERATIONS) == -1) {
         System.out.println(i);
         possibilities.add(i);

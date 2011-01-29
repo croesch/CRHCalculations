@@ -1,78 +1,66 @@
 package com.github.crhcalculations.chess;
 
 /**
- * TODO Comment here
+ * This class is able to solve the eight queens puzzle. But you can define the number of queens/rows you have.
  * 
  * @author croesch
  * @since Date: 09.07.2010 13:17:22
  */
-public class QueensProblem {
+public class QueensPuzzle {
 
   private static final int MAX_SIZE = 8;
 
-  private final boolean[][] schachbrett = new boolean[MAX_SIZE][MAX_SIZE];
+  private final boolean[][] chessboard = new boolean[MAX_SIZE][MAX_SIZE];
 
-  private int anzahl = 0;
+  private int numOfSolutions = 0;
 
   public static void main(String[] args) {
     long start = System.currentTimeMillis();
-    new QueensProblem();
+    new QueensPuzzle();
     System.out.println(System.currentTimeMillis() - start + " ms");
   }
 
-  public QueensProblem() {
+  public QueensPuzzle() {
 
     clearField();
 
-    find_solution(0);
+    findSolution(0);
 
-    System.out.println(this.anzahl + " Lösungen gefunden");
+    System.out.println(this.numOfSolutions + " solutions");
   }
 
-  private void find_solution(int dameNr) {
-    if (dameNr < MAX_SIZE) {
+  private void findSolution(int queenNr) {
+    if (queenNr < MAX_SIZE) {
       for (int i = 0; i < MAX_SIZE; ++i) {
-        if (place_queen(dameNr, i)) {
-          find_solution(dameNr + 1);
-          clear(dameNr, i);
+        if (placeQueen(queenNr, i)) {
+          findSolution(queenNr + 1);
+          clear(queenNr, i);
         }
       }
     } else {
       //      printField();
-      ++this.anzahl;
+      ++this.numOfSolutions;
     }
   }
 
   private void clear(int ln, int col) {
-    this.schachbrett[ln][col] = false;
+    this.chessboard[ln][col] = false;
   }
 
-  private boolean place_queen(int i, int j) {
+  private boolean placeQueen(int i, int j) {
     if (isPossiblePlace(i, j)) {
-      this.schachbrett[i][j] = true;
+      this.chessboard[i][j] = true;
       return true;
     }
     return false;
   }
-
-  //  private boolean place_queen(int start) {
-  //    for (int i = 0; i < 8; ++i) {
-  //      for (int j = 0; j < 8; ++j) {
-  //        if (isPossiblePlace(i, j)) {
-  //          this.Schachbrett[i][j] = true;
-  //          return true;
-  //        }
-  //      }
-  //    }
-  //    return false;
-  //  }
 
   private boolean isPossiblePlace(int ln, int col) {
     //diagonal search - top left
     int j = col;
     int i = ln;
     while (i >= 0 && j >= 0) {
-      if (this.schachbrett[i][j]) {
+      if (this.chessboard[i][j]) {
         return false;
       }
       --i;
@@ -82,7 +70,7 @@ public class QueensProblem {
     j = col;
     i = ln;
     while (i >= 0 && j < MAX_SIZE) {
-      if (this.schachbrett[i][j]) {
+      if (this.chessboard[i][j]) {
         return false;
       }
       --i;
@@ -91,7 +79,7 @@ public class QueensProblem {
 
     //vertical search
     for (i = 0; i < MAX_SIZE; ++i) {
-      if (this.schachbrett[i][col]) {
+      if (this.chessboard[i][col]) {
         return false;
       }
     }
@@ -100,7 +88,7 @@ public class QueensProblem {
     j = col;
     i = ln;
     while (i < MAX_SIZE && j < MAX_SIZE) {
-      if (this.schachbrett[i][j]) {
+      if (this.chessboard[i][j]) {
         return false;
       }
       ++i;
@@ -110,7 +98,7 @@ public class QueensProblem {
     j = col;
     i = ln;
     while (i < MAX_SIZE && j >= 0) {
-      if (this.schachbrett[i][j]) {
+      if (this.chessboard[i][j]) {
         return false;
       }
       ++i;
@@ -119,7 +107,7 @@ public class QueensProblem {
 
     //horizontal search
     for (i = 0; i < MAX_SIZE; ++i) {
-      if (this.schachbrett[ln][i] == true) {
+      if (this.chessboard[ln][i] == true) {
         return false;
       }
     }
@@ -130,8 +118,8 @@ public class QueensProblem {
   private void clearField() {
     for (int i = 0; i < MAX_SIZE; ++i) {
       for (int j = 0; j < MAX_SIZE; ++j) {
-        if (this.schachbrett[i][j]) {
-          this.schachbrett[i][j] = false;
+        if (this.chessboard[i][j]) {
+          this.chessboard[i][j] = false;
         }
       }
     }
@@ -140,7 +128,7 @@ public class QueensProblem {
   private void printField() {
     for (int i = 0; i < MAX_SIZE; ++i) {
       for (int j = 0; j < MAX_SIZE; ++j) {
-        System.out.print("[" + (this.schachbrett[i][j] ? "X" : " ") + "]");
+        System.out.print("[" + (this.chessboard[i][j] ? "X" : " ") + "]");
       }
       System.out.print("\n");
     }

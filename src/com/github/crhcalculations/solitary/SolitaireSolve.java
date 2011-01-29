@@ -1,7 +1,7 @@
 package com.github.crhcalculations.solitary;
 
 /**
- * TODO Comment here ???
+ * This class solves the english peg solitaire and prints the solution. It will find the solution with brute force.
  * 
  * @author croesch
  * @since Date: 25.07.2010 13:49:59

@@ -1,7 +1,7 @@
 package com.github.crhcalculations.sudoku;
 
 /**
- * TODO Comment here
+ * This class is able to solve a sudoku, the algorithm is brute force.
  * 
  * @author croesch
  * @since Date: 09.07.2010 16:43:15
