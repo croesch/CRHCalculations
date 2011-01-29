@@ -1,0 +1,30 @@
+SYNOPSIS
+
+		QueensPuzzle [ option ]
+
+
+DESCRIPTION
+
+		The queens puzzle is the problem of placing n (chess) queens on an nxn chessboard;
+		and to avoid that one of them can capture any other by using the standard chess moves
+		of a queen.
+		So the origin problem is to place eight queens on an 8x8 chessboard. In one row, column
+		or diagonal there must not be two queens.
+		
+		The number of possible solutions will be printed and the time to calculate that.
+
+
+OPTIONS
+
+		The following options are supported:
+
+		-help
+			Shows this help.
+
+		-n
+			Where n is a number > 0. Performs to calculate the queens puzzle for n queens.
+			Does only show the number of possible solutions.
+
+		-show n
+			Where n is a number > 0. Performs to calculate the queens puzzle for n queens.
+			And shows all possible solutions.

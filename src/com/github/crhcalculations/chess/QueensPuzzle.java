@@ -1,138 +1,108 @@
 package com.github.crhcalculations.chess;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
  * This class is able to solve the eight queens puzzle. But you can define the number of queens/rows you have.
  * 
  * @author croesch
  * @since Date: 09.07.2010 13:17:22
  */
-public class QueensPuzzle {
+public final class QueensPuzzle {
 
-  private static final int MAX_SIZE = 8;
+  /** the name of the file that contains the help text for this command. */
+  private static final String HELP_FILE = "help.txt";
 
-  private final boolean[][] chessboard = new boolean[MAX_SIZE][MAX_SIZE];
+  /** the default size of the chessboard and the default number of queens. */
+  private static final int DEFAULT_SIZE = 8;
 
-  private int numOfSolutions = 0;
-
-  public static void main(String[] args) {
-    long start = System.currentTimeMillis();
-    new QueensPuzzle();
-    System.out.println(System.currentTimeMillis() - start + " ms");
+  /** this is a utility class, so the constructor is not wanted. */
+  private QueensPuzzle() {
+  // hide this
   }
 
-  public QueensPuzzle() {
+  /**
+   * Provides the ability to solve the eight queens problem or the n queens problem. Therefore it is possible to just
+   * calculate the number of solutions or to show the solutions. A help text is also available.<br>
+   * <li>{@code -help} will show the help text</li> <li>{@code -n} will calculate the number of solutions, {@code n} is
+   * the number of queens in the field and the size of the field.</li> <li>{@code -show n} the same as {@code -n} except
+   * that it prints all possible solutions.</li><br>
+   * <br>
+   * If no argument is given, only the number of solutions are calculated and there will be eight queens placed into an
+   * 8x8 field.
+   * 
+   * @author croesch
+   * @since Date: 29.01.2011 15:29:20
+   * @param args the arguments for the program.
+   */
+  public static void main(final String[] args) {
 
-    clearField();
+    boolean illegalArgument = args.length > 2;
+    boolean help = false;
+    boolean print = false;
 
-    findSolution(0);
+    int number = DEFAULT_SIZE;
 
-    System.out.println(this.numOfSolutions + " solutions");
-  }
-
-  private void findSolution(int queenNr) {
-    if (queenNr < MAX_SIZE) {
-      for (int i = 0; i < MAX_SIZE; ++i) {
-        if (placeQueen(queenNr, i)) {
-          findSolution(queenNr + 1);
-          clear(queenNr, i);
+    if (!illegalArgument) {
+      if (args.length == 1) {
+        if ("-help".equals(args[0])) {
+          help = true;
+        } else {
+          try {
+            number = Integer.valueOf(args[0].substring(1)).intValue();
+          } catch (NumberFormatException nfe) {
+            illegalArgument = true;
+          }
+        }
+      } else if (args.length == 2) {
+        if ("-show".equals(args[0])) {
+          try {
+            number = Integer.valueOf(args[1]).intValue();
+            print = true;
+          } catch (NumberFormatException nfe) {
+            illegalArgument = true;
+          }
+        } else {
+          illegalArgument = true;
         }
       }
+    }
+
+    if (!illegalArgument && !help) {
+      long start = System.currentTimeMillis();
+      new QueensPuzzleSolver(number, print);
+      System.out.println(System.currentTimeMillis() - start + " ms");
     } else {
-      //      printField();
-      ++this.numOfSolutions;
+      printHelp();
     }
   }
 
-  private void clear(int ln, int col) {
-    this.chessboard[ln][col] = false;
-  }
-
-  private boolean placeQueen(int i, int j) {
-    if (isPossiblePlace(i, j)) {
-      this.chessboard[i][j] = true;
-      return true;
-    }
-    return false;
-  }
-
-  private boolean isPossiblePlace(int ln, int col) {
-    //diagonal search - top left
-    int j = col;
-    int i = ln;
-    while (i >= 0 && j >= 0) {
-      if (this.chessboard[i][j]) {
-        return false;
-      }
-      --i;
-      --j;
-    }
-    //diagonal search - top right
-    j = col;
-    i = ln;
-    while (i >= 0 && j < MAX_SIZE) {
-      if (this.chessboard[i][j]) {
-        return false;
-      }
-      --i;
-      ++j;
-    }
-
-    //vertical search
-    for (i = 0; i < MAX_SIZE; ++i) {
-      if (this.chessboard[i][col]) {
-        return false;
-      }
-    }
-
-    //diagonal search - bottom right
-    j = col;
-    i = ln;
-    while (i < MAX_SIZE && j < MAX_SIZE) {
-      if (this.chessboard[i][j]) {
-        return false;
-      }
-      ++i;
-      ++j;
-    }
-    //diagonal search - bottom left
-    j = col;
-    i = ln;
-    while (i < MAX_SIZE && j >= 0) {
-      if (this.chessboard[i][j]) {
-        return false;
-      }
-      ++i;
-      --j;
-    }
-
-    //horizontal search
-    for (i = 0; i < MAX_SIZE; ++i) {
-      if (this.chessboard[ln][i] == true) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  private void clearField() {
-    for (int i = 0; i < MAX_SIZE; ++i) {
-      for (int j = 0; j < MAX_SIZE; ++j) {
-        if (this.chessboard[i][j]) {
-          this.chessboard[i][j] = false;
+  /**
+   * Print the help file to the stdout-stream.
+   * 
+   * @author croesch
+   * @since Date: 29.01.2011 15:33:59
+   */
+  private static void printHelp() {
+    try {
+      InputStream in = QueensPuzzle.class.getResourceAsStream(HELP_FILE);
+      if (in != null) {
+        InputStreamReader isr = new InputStreamReader(in, "utf-8");
+        BufferedReader reader = new BufferedReader(isr);
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+          System.out.println(line);
         }
+      } else {
+        throw new FileNotFoundException("file not found: " + HELP_FILE);
       }
+    } catch (IOException ioe) {
+      System.out.println(ioe.getMessage());
     }
-  }
-
-  private void printField() {
-    for (int i = 0; i < MAX_SIZE; ++i) {
-      for (int j = 0; j < MAX_SIZE; ++j) {
-        System.out.print("[" + (this.chessboard[i][j] ? "X" : " ") + "]");
-      }
-      System.out.print("\n");
-    }
-    System.out.print("\n");
   }
 
 }
