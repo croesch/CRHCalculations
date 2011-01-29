@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * TODO Comment here ???
  * 
- * @author $Author: Christian $
- * @version $Revision: 1.1 $ ($Date: 25.07.2010 15:32:41 $)
+ * @author croesch
+ * @since Date: 25.07.2010 15:32:41
  */
 public class LychrelTester {
 

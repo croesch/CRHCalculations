@@ -3,8 +3,8 @@ package com.github.crhcalculations.solitary;
 /**
  * TODO Comment here ???
  * 
- * @author $Author: Christian $
- * @version $Revision: 1.1 $ ($Date: 25.07.2010 13:49:59 $)
+ * @author croesch
+ * @since Date: 25.07.2010 13:49:59
  */
 public class SolitaireSolve {
 

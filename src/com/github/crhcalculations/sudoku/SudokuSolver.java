@@ -3,8 +3,8 @@ package com.github.crhcalculations.sudoku;
 /**
  * TODO Comment here
  * 
- * @author $Author: Christian $
- * @version $Revision: 1.1 $ ($Date: 09.07.2010 16:43:15 $)
+ * @author croesch
+ * @since Date: 09.07.2010 16:43:15
  */
 public class SudokuSolver {
 

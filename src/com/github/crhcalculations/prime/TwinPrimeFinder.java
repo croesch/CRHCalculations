@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * TODO Comment here ???
  * 
- * @author $Author: Christian $
- * @version $Revision: 1.1 $ ($Date: 25.07.2010 16:38:47 $)
+ * @author croesch
+ * @since Date: 25.07.2010 16:38:47
  */
 public class TwinPrimeFinder {
 
