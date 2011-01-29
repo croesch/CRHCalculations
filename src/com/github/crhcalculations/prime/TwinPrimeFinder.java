@@ -14,10 +14,10 @@ public class TwinPrimeFinder {
   private final List<Integer> primeNumbers = new ArrayList<Integer>();
 
   public static void main(String[] args) {
-    TwinPrimeFinder pz = new TwinPrimeFinder();
-    pz.initPrimeNumbers(100000);
+    TwinPrimeFinder tpf = new TwinPrimeFinder();
+    tpf.initPrimeNumbers(100000);
     int primeOld = -12;
-    for (int prime : pz.getPrimeNumbers()) {
+    for (int prime : tpf.getPrimeNumbers()) {
       if (prime - primeOld == 2) {
         System.out.println(primeOld + " - " + prime);
       }
@@ -35,8 +35,8 @@ public class TwinPrimeFinder {
         this.primeNumbers.add(i);
       } else {
         boolean newPrime = true;
-        for (int prim : this.primeNumbers) {
-          if (i % prim == 0) {
+        for (int prime : this.primeNumbers) {
+          if (i % prime == 0) {
             newPrime = false;
             break;
           }

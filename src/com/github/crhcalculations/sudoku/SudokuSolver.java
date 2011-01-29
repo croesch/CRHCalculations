@@ -22,7 +22,7 @@ public class SudokuSolver {
   //                           {0, 0, 0,/**/0, 0, 0,/**/0, 0, 0},
   };
 
-  private int loesungen = 0;
+  private int solutions = 0;
 
   public static void main(String[] args) {
     new SudokuSolver();
@@ -31,7 +31,7 @@ public class SudokuSolver {
   public SudokuSolver() {
     findSolution(0);
 
-    System.out.println(this.loesungen + " Lösungen gefunden ...");
+    System.out.println(this.solutions + " solutions found ...");
   }
 
   private void findSolution(int offs) {
@@ -47,7 +47,7 @@ public class SudokuSolver {
         }
       }
     } else {
-      System.out.print("L�sung #" + ++this.loesungen + ":");
+      System.out.print("solution #" + ++this.solutions + ":");
       printField();
     }
   }
