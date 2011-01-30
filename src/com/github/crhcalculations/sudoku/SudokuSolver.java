@@ -14,22 +14,32 @@ public class SudokuSolver {
   /** the width and height of a square in fields. */
   private static final int SQUARE_SIZE = 3;
 
-  private final int[][] field = { {0, 0, 8, /**/0, 0, 6, /**/9, 1, 0},
-                                 {6, 1, 0, /**/5, 4, 0, /**/0, 0, 0},
-                                 {2, 9, 0, /**/1, 8, 0, /**/0, 0, 0},
-                                 //****************************************************//
-                                 {9, 0, 0, /**/4, 0, 0, /**/0, 0, 0},
-                                 {0, 6, 2, /**/0, 9, 1, /**/0, 0, 0},
-                                 {0, 0, 0, /**/0, 0, 0, /**/4, 7, 9},
-                                 //****************************************************//
-                                 {7, 0, 0, /**/2, 6, 0, /**/0, 0, 0},
-                                 {0, 0, 0, /**/0, 0, 0, /**/6, 2, 3},
-                                 {0, 2, 6, /**/0, 1, 5, /**/0, 0, 0}};
+  /** the sudoku field. */
+  private final int[][] field;
 
+  /** the number of solutions found. */
   private int solutions = 0;
 
-  public static void main(String[] args) {
-    new SudokuSolver().findSolution(0);
+  /**
+   * Constructs a sudoku field with the given initial value and tries to solve it. Prints the solution on screen.
+   * 
+   * @author croesch
+   * @since Date: 30.01.2011 15:58:06
+   * @param initialField the initial value for the field
+   */
+  public SudokuSolver(final String initialField) {
+    if (initialField == null || initialField.length() != SIZE * SIZE) {
+      throw new IllegalArgumentException();
+    }
+    this.field = new int[SIZE][SIZE];
+    for (int i = 0; i < initialField.length(); ++i) {
+      int num = Integer.valueOf(String.valueOf(initialField.charAt(i))).intValue();
+      this.field[i / SIZE][i % SIZE] = num;
+    }
+
+    findSolution(0);
+
+    System.out.println(this.solutions + " solutions found ...");
   }
 
   /**
@@ -57,8 +67,6 @@ public class SudokuSolver {
       System.out.print("solution #" + ++this.solutions + ":");
       printField();
     }
-
-    System.out.println(this.solutions + " solutions found ...");
   }
 
   /**

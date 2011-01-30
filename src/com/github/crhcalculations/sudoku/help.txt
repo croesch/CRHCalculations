@@ -1,0 +1,24 @@
+SYNOPSIS
+
+		Sudoku [ option ]
+
+
+DESCRIPTION
+
+		The sudoku solver tries to solve the given sudoku and prints the
+		solutions on the stdout.
+
+
+OPTIONS
+
+		The following options are supported:
+
+		-help
+			Shows this help.
+
+		FIELD
+			Defines the field to start from. Containing only characters from 0-9
+			and no whitespaces or something else. You start reading the field
+			in the upper left corner and read line after line. If a cell is
+			empty you type '0', else you type the number that stands in the
+			cell.
