@@ -85,6 +85,9 @@ public final class LychrelNumber {
       LychrelNumberFinder.findLychrelNumbers(maxNumber, maxIterations);
       System.out.println(System.currentTimeMillis() - start + " ms");
     } else {
+      if (illegalArgument) {
+        System.out.println("Wrong usage of '" + LychrelNumber.class.getSimpleName() + "' see help for correct usage:");
+      }
       printHelp();
     }
   }

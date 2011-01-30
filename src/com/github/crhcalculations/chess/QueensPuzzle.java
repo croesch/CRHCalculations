@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import com.github.crhcalculations.lichrel.LychrelNumber;
+
 /**
  * This class is able to solve the eight queens puzzle. But you can define the number of queens/rows you have.
  * 
@@ -77,6 +79,9 @@ public final class QueensPuzzle {
       new QueensPuzzleSolver(number, print);
       System.out.println(System.currentTimeMillis() - start + " ms");
     } else {
+      if (illegalArgument) {
+        System.out.println("Wrong usage of '" + LychrelNumber.class.getSimpleName() + "' see help for correct usage:");
+      }
       printHelp();
     }
   }
