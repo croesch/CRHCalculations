@@ -1,0 +1,25 @@
+SYNOPSIS
+
+		TwinPrime [ option ]
+
+
+DESCRIPTION
+
+		The twin prime finder finds all pairs of primes from 1 to a given
+		maximum. Therefore it first searches for all primes and then it searches
+		for pairs in the prime list.
+		If no maximum number is given the default is 1000.
+		
+		All twin prime numbers will be printed on screen.
+
+
+OPTIONS
+
+		The following options are supported:
+
+		-help
+			Shows this help.
+
+		-max-number n
+			Defines that the program should test n numbers, if they are a prime.
+			If this option isn't given the maximum number to test will be 1000.
