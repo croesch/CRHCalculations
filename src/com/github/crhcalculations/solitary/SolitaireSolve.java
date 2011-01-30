@@ -13,7 +13,15 @@ public final class SolitaireSolve {
   // hide this
   }
 
-  public static void main(String[] args) {
+  /**
+   * Solves the English Peg Solitaire. There are no arguments to pass, just call the method and the program will run and
+   * print the results.
+   * 
+   * @author croesch
+   * @since Date: 30.01.2011 15:47:53
+   * @param args the parameter for the program, but they aren't read
+   */
+  public static void main(final String[] args) {
     EnglishPegSolitaire.findSolution();
   }
 
