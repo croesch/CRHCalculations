@@ -1,0 +1,32 @@
+SYNOPSIS
+
+		LychrelNumber [ options ]
+
+
+DESCRIPTION
+
+		The lychrel number finder finds possible lychrel numbers between 0 and the given maximum
+		number. Since you cannot say that a number is a lychrel number this program makes the given
+		number of iterations to find a palindrome. If after the maximum number of iterations no
+		palindrome has been found this program says that the current number is a possible lychrel
+		number.
+		But of course it could be possible that after some more iterations you would find out that
+		this number wasn't a lychrel number. But that's the problem.
+		
+		All possible numbers will be printed on screen.
+
+
+OPTIONS
+
+		The following options are supported:
+
+		-help
+			Shows this help.
+
+		-iterations n
+			Defines that after maximum n iterations the number is a possible lychrel number.
+			If this option isn't defined the maximum number of iterations will be 1000.
+
+		-max-number n
+			Defines that the program should test n numbers. If this option isn't given the
+			maximum number to test will be 1000.
