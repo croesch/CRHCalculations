@@ -6,7 +6,7 @@ package com.github.crhcalculations.chess;
  * @author croesch
  * @since Date: 29.01.2011 14:46:03
  */
-public class QueensPuzzleSolver {
+class QueensPuzzleSolver {
 
   /** the size of the field for rows and columns and the number of queens. */
   private final int fieldSize;
@@ -28,7 +28,7 @@ public class QueensPuzzleSolver {
    * @param size the size of the field and so the number of queens
    * @param show if every solution should be printed
    */
-  public QueensPuzzleSolver(final int size, final boolean show) {
+  QueensPuzzleSolver(final int size, final boolean show) {
     this.fieldSize = size;
     this.printSolutions = show;
     this.chessboard = new boolean[this.fieldSize][this.fieldSize];
