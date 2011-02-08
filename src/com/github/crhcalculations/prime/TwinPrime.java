@@ -23,7 +23,7 @@ public final class TwinPrime {
 
   /** this is a utility class, so the constructor is not wanted. */
   private TwinPrime() {
-  // hide this
+    throw new AssertionError();
   }
 
   /**
@@ -84,11 +84,11 @@ public final class TwinPrime {
    * @since Date: 29.01.2011 15:33:59
    */
   private static void printHelp() {
+    BufferedReader reader = null;
     try {
       InputStream in = TwinPrime.class.getResourceAsStream(HELP_FILE);
       if (in != null) {
-        InputStreamReader isr = new InputStreamReader(in, "utf-8");
-        BufferedReader reader = new BufferedReader(isr);
+        reader = new BufferedReader(new InputStreamReader(in, "utf-8"));
         String line = null;
         while ((line = reader.readLine()) != null) {
           System.out.println(line);
@@ -98,6 +98,14 @@ public final class TwinPrime {
       }
     } catch (IOException ioe) {
       System.out.println(ioe.getMessage());
+    } finally {
+      if (reader != null) {
+        try {
+          reader.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
     }
   }
 

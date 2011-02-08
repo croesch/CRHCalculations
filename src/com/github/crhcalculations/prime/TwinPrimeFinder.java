@@ -16,7 +16,7 @@ public final class TwinPrimeFinder {
 
   /** this is a utility class, so the constructor is not wanted. */
   private TwinPrimeFinder() {
-  // hide this
+    throw new AssertionError();
   }
 
   /**

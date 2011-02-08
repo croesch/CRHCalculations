@@ -10,7 +10,7 @@ public final class SolitaireSolve {
 
   /** this is a utility class, so the constructor is not wanted. */
   private SolitaireSolve() {
-  // hide this
+    throw new AssertionError();
   }
 
   /**

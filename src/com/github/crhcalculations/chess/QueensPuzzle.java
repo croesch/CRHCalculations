@@ -22,9 +22,14 @@ public final class QueensPuzzle {
   /** the default size of the chessboard and the default number of queens. */
   private static final int DEFAULT_SIZE = 8;
 
-  /** this is a utility class, so the constructor is not wanted. */
+  /**
+   * This is a utility class, so the constructor is not wanted.
+   * 
+   * @author croesch
+   * @since Date: 08.02.2011 20:33:43
+   */
   private QueensPuzzle() {
-  // hide this
+    throw new AssertionError();
   }
 
   /**
@@ -93,11 +98,11 @@ public final class QueensPuzzle {
    * @since Date: 29.01.2011 15:33:59
    */
   private static void printHelp() {
+    BufferedReader reader = null;
     try {
       InputStream in = QueensPuzzle.class.getResourceAsStream(HELP_FILE);
       if (in != null) {
-        InputStreamReader isr = new InputStreamReader(in, "utf-8");
-        BufferedReader reader = new BufferedReader(isr);
+        reader = new BufferedReader(new InputStreamReader(in, "utf-8"));
         String line = null;
         while ((line = reader.readLine()) != null) {
           System.out.println(line);
@@ -107,6 +112,14 @@ public final class QueensPuzzle {
       }
     } catch (IOException ioe) {
       System.out.println(ioe.getMessage());
+    } finally {
+      if (reader != null) {
+        try {
+          reader.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
     }
   }
 

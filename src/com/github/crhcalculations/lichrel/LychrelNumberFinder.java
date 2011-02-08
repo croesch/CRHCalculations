@@ -18,7 +18,7 @@ public final class LychrelNumberFinder {
    * @since Date: 29.01.2011 22:57:50
    */
   private LychrelNumberFinder() {
-  // hide constructor, because this class is a utility class
+    throw new AssertionError();
   }
 
   /**
