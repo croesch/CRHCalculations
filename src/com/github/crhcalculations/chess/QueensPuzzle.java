@@ -61,7 +61,7 @@ public final class QueensPuzzle {
         } else {
           try {
             number = Integer.valueOf(args[0].substring(1)).intValue();
-          } catch (NumberFormatException nfe) {
+          } catch (final NumberFormatException nfe) {
             illegalArgument = true;
           }
         }
@@ -70,7 +70,7 @@ public final class QueensPuzzle {
           try {
             number = Integer.valueOf(args[1]).intValue();
             print = true;
-          } catch (NumberFormatException nfe) {
+          } catch (final NumberFormatException nfe) {
             illegalArgument = true;
           }
         } else {
@@ -80,7 +80,7 @@ public final class QueensPuzzle {
     }
 
     if (!illegalArgument && !help) {
-      long start = System.currentTimeMillis();
+      final long start = System.currentTimeMillis();
       new QueensPuzzleSolver(number, print);
       System.out.println(System.currentTimeMillis() - start + " ms");
     } else {
@@ -100,7 +100,7 @@ public final class QueensPuzzle {
   private static void printHelp() {
     BufferedReader reader = null;
     try {
-      InputStream in = QueensPuzzle.class.getResourceAsStream(HELP_FILE);
+      final InputStream in = QueensPuzzle.class.getResourceAsStream(HELP_FILE);
       if (in != null) {
         reader = new BufferedReader(new InputStreamReader(in, "utf-8"));
         String line = null;
@@ -110,13 +110,13 @@ public final class QueensPuzzle {
       } else {
         throw new FileNotFoundException("file not found: " + HELP_FILE);
       }
-    } catch (IOException ioe) {
+    } catch (final IOException ioe) {
       System.out.println(ioe.getMessage());
     } finally {
       if (reader != null) {
         try {
           reader.close();
-        } catch (IOException e) {
+        } catch (final IOException e) {
           e.printStackTrace();
         }
       }
