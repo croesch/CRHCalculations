@@ -43,7 +43,7 @@ public final class Sudoku {
     boolean help = false;
 
     if (!illegalArgument) {
-      if ("-help".equals(args[0])) {
+      if (isHelpWanted(args[0])) {
         help = true;
       } else if (args[0].length() != requiredArgLength) {
         illegalArgument = true;
@@ -92,6 +92,18 @@ public final class Sudoku {
         }
       }
     }
+  }
+
+  /**
+   * Returns whether the given argument indicates that the user wants to see the help.
+   * 
+   * @author croesch
+   * @since Date: May 28, 2011 9:26:01 AM
+   * @param arg the argument that should be tested
+   * @return <code>true</code>, if the user wants to see the help
+   */
+  private static boolean isHelpWanted(final String arg) {
+    return "-help".equals(arg) || "--help".equals(arg) || "-h".equals(arg);
   }
 
 }

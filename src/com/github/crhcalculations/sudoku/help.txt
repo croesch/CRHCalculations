@@ -13,7 +13,7 @@ OPTIONS
 
 		The following options are supported:
 
-		-help
+		--help, -h
 			Shows this help.
 
 		FIELD
