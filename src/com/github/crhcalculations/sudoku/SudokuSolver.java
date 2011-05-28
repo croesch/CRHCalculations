@@ -26,6 +26,7 @@ public class SudokuSolver {
    * @author croesch
    * @since Date: 30.01.2011 15:58:06
    * @param initialField the initial value for the field
+   * @see SudokuSolver#SudokuSolver(int[][])
    */
   public SudokuSolver(final String initialField) {
     if (initialField == null || initialField.length() != SIZE * SIZE) {
@@ -35,6 +36,27 @@ public class SudokuSolver {
     for (int i = 0; i < initialField.length(); ++i) {
       int num = Integer.valueOf(String.valueOf(initialField.charAt(i))).intValue();
       this.field[i / SIZE][i % SIZE] = num;
+    }
+
+    findSolution(0);
+
+    System.out.println(this.solutions + " solutions found ...");
+  }
+
+  /**
+   * Constructs a sudoku field with the given initial value and tries to solve it. Prints the solution on screen.
+   * 
+   * @author croesch
+   * @since Date: 27.05.2011 21:30:00
+   * @param initialField the initial field, that should be solved
+   * @see SudokuSolver#SudokuSolver(String)
+   */
+  public SudokuSolver(final int[][] initialField) {
+    this.field = new int[SIZE][SIZE];
+    for (int y = 0; y < SIZE; ++y) {
+      for (int x = 0; x < SIZE; ++x) {
+        this.field[x][y] = initialField[x][y];
+      }
     }
 
     findSolution(0);
